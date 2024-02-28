@@ -15,7 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $_SESSION['user_id'] = $user_data['id'];
             $_SESSION['username'] = $user_data['username'];
             
-            if ($user_data['role'] == 'admn') {  
+            if ($user_data['role'] == 'admin') {  
                 header("Location:../dashboardadmin/dashboardadmin.php");
                 exit();
             } elseif ($user_data['role'] == 'petugas') { 
