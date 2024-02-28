@@ -1,4 +1,4 @@
 <?php
 $conn = mysqli_connect("localhost", "root", "", "eperpus");
 ?>
-g
+gc
