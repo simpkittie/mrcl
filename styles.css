@@ -1,0 +1,157 @@
+.navbar-brand {
+  position: absolute;
+  top: 0;
+  left: 0;
+  margin: 10px; 
+}
+
+.dropdown {
+  position: absolute;
+  top: 25px;
+  right: 0;
+}
+
+.dropdown-menu {
+  margin-top: 10px;
+}
+
+.custom-css-form {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.col-md-2 {
+  font-size: 30px;
+  color: rgb(94, 204, 255);
+  font-weight: bold;
+}
+
+.btn-danger,
+.btn-primary {
+  border-radius: 15px; 
+  border: none; 
+  color: #fff; 
+}
+
+.btn-danger {
+  background-color: #dc3545; 
+}
+
+.btn-primary {
+  background-color: #007bff; 
+}
+
+.btn-danger:hover,
+.btn-primary:hover {
+  opacity: 0.8; 
+}
+
+.btn-danger:focus,
+.btn-primary:focus {
+  outline: none; 
+  box-shadow: none; 
+}
+
+.card,
+.cardbody {
+  opacity: 0.9; 
+  position: relative;
+  border-radius: 15px; 
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); 
+  padding: 20px; 
+  background-color: #ffb0a7; 
+}
+
+.arrow-icon {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  color: #000; 
+  font-size: 20px; 
+}
+
+body {
+  background-image: radial-gradient(
+    circle at 50% -13.44%,
+    #48dce7 0,
+    #46dbf0 3.33%,
+    #49daf8 6.67%,
+    #51d9ff 10%,
+    #5cd7ff 13.33%,
+    #69d5ff 16.67%,
+    #78d2ff 20%,
+    #87cfff 23.33%,
+    #97ccff 26.67%,
+    #a6c9ff 30%,
+    #b5c6ff 33.33%,
+    #c3c2ff 36.67%,
+    #d0bfff 40%,
+    #ddbbff 43.33%,
+    #e8b8fa 46.67%,
+    #f2b5f2 50%,
+    #fbb2e9 53.33%,
+    #ffb0e0 56.67%,
+    #ffafd7 60%,
+    #ffaecd 63.33%,
+    #ffadc3 66.67%,
+    #ffaeb9 70%,
+    #ffafb0 73.33%,
+    #ffb0a7 76.67%,
+    #ffb29e 80%,
+    #ffb597 83.33%,
+    #ffb890 86.67%,
+    #fdbb8a 90%,
+    #f6be86 93.33%,
+    #efc283 96.67%,
+    #e6c581 100%
+  );
+  margin-top: 10px;
+  height: 110vh;
+  margin-bottom: 50px;
+  color: #000; 
+}
+
+.form-control,
+.form-select {
+  background-color: rgba(255, 255, 255, 0.7); 
+  color: #000; 
+  border: 2px solid #000; 
+  border-radius: 15px;
+  padding: 0.5rem;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.7); 
+}
+
+.form-control:focus,
+.form-select:focus {
+  background-color: #ffb890; 
+  border: 2px solid #000; 
+  border-radius: 15px;
+  padding: 0.5rem;
+  box-shadow: 0 0 0 2px rgba(255, 255, 255, 0.9); 
+}
+
+.btn-success,
+.btn-warning {
+  border-radius: 15px;
+  border: none;
+}
+
+.btn-success:hover,
+.btn-warning:hover {
+  opacity: 0.8;
+}
+
+.btn-success:focus,
+.btn-warning:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.btn-cyan {
+  background-color: rgb(100, 149, 237);
+}
+
+.btn-kembali {
+  background-color: rgb(119, 136, 153);
+}
