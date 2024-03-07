@@ -6,13 +6,30 @@ if (!isset($_SESSION["user_id"])) {
     header("Location: ../../login.php");
     exit;
 }
+
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['rating'], $_POST['ulasan'])) {
+    $pinjaman_id = $_POST['pinjaman_id'];
+    $rating = $_POST['rating'];
+    $ulasan = $_POST['ulasan'];
+    
+    // Simpan rating dan ulasan
+    $query_update = "UPDATE peminjaman SET rating = ?, ulasan = ? WHERE id = ?";
+    $stmt_update = $conn->prepare($query_update);
+    $stmt_update->bind_param("isi", $rating, $ulasan, $pinjaman_id);
+    $stmt_update->execute();
+    
+    // Redirect untuk refresh halaman
+    header("Location: ".$_SERVER['PHP_SELF']);
+    exit();
+}
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daftar Buku yang Dipinjam</title>
+    <title>Daftar Buku yang Sedang Dipinjam</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://kit.fontawesome.com/de8de52639.js" crossorigin="anonymous" rel="stylesheet">
     <style>
@@ -44,38 +61,31 @@ if (!isset($_SESSION["user_id"])) {
     <div class="btn-back">
         <a href="../dashboardmember.php" class="btn btn-primary">Kembali</a>
     </div>
-    <h2 style="text-align: center;">Daftar Buku yang Dipinjam</h2>
+    <h2 style="text-align: center;">Daftar Buku yang Sedang Dipinjam</h2>
     <div class="row">
         <?php 
         $user_id = $_SESSION["user_id"];
-        $query_pinjaman = "SELECT * FROM peminjaman WHERE userid = ?";
+        $query_pinjaman = "SELECT p.*, b.* FROM peminjaman p INNER JOIN buku b ON p.bukuid = b.id WHERE p.userid = ? AND p.status = 'belum dikembalikan'";
         $stmt_pinjaman = $conn->prepare($query_pinjaman);
         $stmt_pinjaman->bind_param("i", $user_id);
         $stmt_pinjaman->execute();
         $result_pinjaman = $stmt_pinjaman->get_result();
         while ($row_pinjaman = $result_pinjaman->fetch_assoc()) { 
             $buku_id = $row_pinjaman['bukuid'];
-            $query_buku = "SELECT * FROM buku WHERE id = ?";
-            $stmt_buku = $conn->prepare($query_buku);
-            $stmt_buku->bind_param("i", $buku_id);
-            $stmt_buku->execute();
-            $result_buku = $stmt_buku->get_result();
-            $buku = $result_buku->fetch_assoc();
-            if ($row_pinjaman['status'] === 'belum dikembalikan') {
         ?>
         <div class="col-md-4">
             <div class="img-container">
-                <img src="../../imgDB/<?= $buku["cover"]; ?>" alt="Gambar Buku">
+                <img src="../../imgDB/<?= $row_pinjaman["cover"]; ?>" alt="Gambar Buku">
             </div>
-            <h5><?= $buku['judul']; ?></h5>
-            <p><strong>Penulis:</strong> <?= $buku['penulis']; ?></p>
-            <p><strong>Penerbit:</strong> <?= $buku['penerbit']; ?></p>
+            <h5><?= $row_pinjaman['judul']; ?></h5>
+            <p><strong>Penulis:</strong> <?= $row_pinjaman['penulis']; ?></p>
+            <p><strong>Penerbit:</strong> <?= $row_pinjaman['penerbit']; ?></p>
             <p><strong>Tanggal Peminjaman:</strong> <?= $row_pinjaman['tanggal_peminjaman']; ?></p>
             <p><strong>Tanggal Pengembalian:</strong> <?= $row_pinjaman['tanggal_pengembalian']; ?></p>
             <p><strong>Status:</strong> <?= $row_pinjaman['status']; ?></p>
-            <form class="rating-form" action="../../backend/prosesrating.php" method="GET">
+            <?php if (empty($row_pinjaman['rating']) && empty($row_pinjaman['ulasan'])): ?>
+            <form class="rating-form" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST">
                 <input type="hidden" name="pinjaman_id" value="<?= $row_pinjaman['id']; ?>">
-                <input type="hidden" name="book_id" value="<?= $buku_id ?>">
                 <div class="mb-3">
                     <label for="rating" class="form-label">Rating (1-5)</label>
                     <input type="number" class="form-control" id="rating" name="rating" min="1" max="5" required>
@@ -84,11 +94,16 @@ if (!isset($_SESSION["user_id"])) {
                     <label for="review" class="form-label">Ulasan</label>
                     <textarea class="form-control" id="review" name="ulasan"></textarea>
                 </div>
-                <button type="submit" class="btn btn-danger">Kembalikan</button>
+                <button type="submit" class="btn btn-danger">Berikan Ulasan</button>
             </form>
+            <?php else: ?>
+            <div class="mb-3">
+                <p><strong>Rating:</strong> <?= isset($row_pinjaman['rating']) ? $row_pinjaman['rating'] : 'Belum ada rating'; ?></p>
+                <p><strong>Ulasan:</strong> <?= isset($row_pinjaman['ulasan']) ? $row_pinjaman['ulasan'] : 'Belum ada ulasan'; ?></p>
+            </div>
+            <?php endif; ?>
         </div>
         <?php 
-            } // end if
         } // end while
         ?>
     </div>

@@ -42,7 +42,7 @@ $result = mysqli_query($conn, $query);
 </head>
 <body>
 <div class="container mt-4">
-    <a href="../dashboardadmin.php" class="btn btn-primary mb-3"><i class="fas fa-arrow-left"></i> Kembali</a>
+    <a href="../dashboardpetugas.php" class="btn btn-primary mb-3"><i class="fas fa-arrow-left"></i> Kembali</a>
     <h2 style="text-align: center;">Daftar Pengembalian</h2>
     <div class="row">
         <?php while ($row_pinjaman = mysqli_fetch_assoc($result)) { ?>

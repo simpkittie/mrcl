@@ -55,7 +55,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update Buku || Admin</title>
+    <title>Update Buku || Petugas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://kit.fontawesome.com/de8de52639.js" crossorigin="anonymous" rel="stylesheet">
     <style>
@@ -97,9 +97,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <div class="mb-3">
             <label for="kategori" class="form-label">Kategori</label>
             <select class="form-select" id="kategori" name="kategori">
-                <?php foreach ($kategoribuku as $kategori) : ?>
-                    <option value="<?= $kategori['id']; ?>" <?= ($kategori['id'] == $buku['kategori_id']) ? 'selected' : ''; ?>><?= $kategori['nama_kategori']; ?></option>
-                <?php endforeach; ?>
+            <?php foreach ($kategoribuku as $kategori) : ?>
+            <?php
+            $selected = '';
+            if (isset($buku['kategori_id']) && $kategori['id'] == $buku['kategori_id']) {
+                $selected = 'selected';
+            }
+            ?>
+            <option value="<?= $kategori['id']; ?>" <?= $selected; ?>><?= $kategori['nama_kategori']; ?></option>
+        <?php endforeach; ?>
             </select>
         </div>
         <button type="submit" class="btn btn-primary">Update</button>

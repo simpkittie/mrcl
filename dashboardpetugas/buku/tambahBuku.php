@@ -29,7 +29,7 @@ $kategori = queryReadData("SELECT * FROM kategoribuku");
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-T3c6CoIi6uLrA9TneNEoa7RxnatzjcDSCmG1MXxSR1GAsXEV/Dwwykc2MPK8M2HN" crossorigin="anonymous">
     <script src="https://kit.fontawesome.com/de8de52639.js" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="../../styles.css">
-    <title>Tambah Buku || Admin</title>
+    <title>Tambah Buku || Petugas</title>
 </head>
 <body>
     <a class="navbar-brand">
@@ -65,13 +65,13 @@ $kategori = queryReadData("SELECT * FROM kategoribuku");
                     <a href="kategori.php" class="btn btn-primary btn-lg btn-cyan">Kategori</a>
                 </div>
                 <div class="col-md-6 d-flex justify-content-end">
-                    <a href="../dashboardadmin.php" class="btn btn-secondary btn-lg btn-kembali">
+                    <a href="../dashboardpetugas.php" class="btn btn-secondary btn-lg btn-kembali">
                         <i class="fas fa-arrow-left"></i> Kembali
                     </a>
                 </div>
             </div>
             <h1 class="text-center fw-bold p-3">Form Tambah Buku</h1>
-            <form action="../../backend/tambahbuku.php" method="post" enctype="multipart/form-data" class="mt-3 p-2">
+            <form action="../../backend/tambahbukupetugas.php" method="post" enctype="multipart/form-data" class="mt-3 p-2">
                 <div class="custom-css-form"> 
                     <div class="mb-3">
                         <label for="formFileMultiple" class="form-label">Cover Buku</label>

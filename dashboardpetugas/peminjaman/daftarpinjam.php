@@ -44,7 +44,7 @@ $result_pinjaman = $stmt_pinjaman->get_result();
 </head>
 <body>
 <div class="container mt-4">
-<a href="../dashboardadmin.php" class="btn btn-primary mb-3"><i class="fas fa-arrow-left"></i> Kembali</a>
+<a href="../dashboardpetugas.php" class="btn btn-primary mb-3"><i class="fas fa-arrow-left"></i> Kembali</a>
     <h2 style="text-align: center;">Daftar Pinjaman</h2>
     <div class="row">
         <?php while ($row_pinjaman = $result_pinjaman->fetch_assoc()) { 

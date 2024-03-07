@@ -29,7 +29,7 @@ $buku = mysqli_fetch_all($result, MYSQLI_ASSOC);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Kelola buku || Admin</title>
+    <title>Kelola buku || Petugas</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <link href="https://kit.fontawesome.com/de8de52639.js" crossorigin="anonymous" rel="stylesheet">
     <style>
@@ -80,10 +80,10 @@ $buku = mysqli_fetch_all($result, MYSQLI_ASSOC);
 </head>
 <body>
 <a class="navbar-brand">
-        <img src="../../assets/logoo.png" alt="logo" width="100px">
+        <img src="../../assets/logo2.png" alt="logo" width="100px">
     </a>
     <ul class="position-absolute top-0 end-0 mt-2 p-2">
-    <a href="../dashboardadmin.php" class="btn btn-primary back-btn"><i class="fas fa-arrow-left me-2"></i>Kembali</a>
+    <a href="../dashboardpetugas.php" class="btn btn-primary back-btn"><i class="fas fa-arrow-left me-2"></i>Kembali</a>
     </ul>
         <div class="p-4 mt-4">
             <h2 class="title">Daftar Buku</h2>

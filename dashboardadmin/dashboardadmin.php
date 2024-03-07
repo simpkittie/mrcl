@@ -38,33 +38,42 @@ if (!isset($_SESSION["user_id"])) {
             margin-top: 10px;
         }
 
-        .cardImg {
-            width: 600px;
-            max-width: 100%;
-            margin-bottom: 20px;
-        }
-
-        .cardImg button {
+        .cardButton {
+            background-color: transparent;
             border: none;
-            background: none;
-            padding: 0;
             cursor: pointer;
-        }
-
-        .cardImg img {
-            width: 100%;
-            border-radius: 10px;
             transition: transform 0.3s ease;
+            width: 160px;
+            height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(145deg, #ffffff, #e0e0e0);
+            box-shadow: 4px 4px 8px rgba(0, 0, 0, 0.1), -4px -4px 8px rgba(255, 255, 255, 0.9);
+            border-radius: 15px;
+            text-align: center;
+            text-decoration: none;
+            margin: 10px;
         }
 
-        .cardImg img:hover {
-            transform: scale(1.05);
+        .cardButton:hover {
+            transform: scale(1.1);
         }
 
-        @media screen and (max-width: 600px) {
-            .d-flex flex-wrap gap-2 cardImg a img {
-                width: 200px;
-            }
+        .bookIcon {
+            color: #007bff;
+            font-size: 3rem;
+        }
+
+        .bookIcon:hover {
+            color: #0056b3; /* Change color on hover if needed */
+        }
+
+        .buttonText {
+            color: #007bff;
+            margin-top: 10px;
+            text-decoration: none;
         }
     </style>
 </head>
@@ -101,41 +110,49 @@ if (!isset($_SESSION["user_id"])) {
         ?>
         <h1 class="mt-5 fw-bold">Dashboard - <span class="fs-4 text-primary"><?php echo $day . " " . $dayOfMonth . " " . $month . " " . $year; ?></span></h1>
         <div class="alert alert-warning" role="alert">Selamat datang - <span class="fw-bold text-capitalize"><?php echo $_SESSION['username']; ?></span> di Dashboard EPerpus</div>
-        <div class="mt-4 p-3">
-            <div class="d-flex flex-wrap justify-content-center gap-2">
-                <div class="cardImg">
-                    <button onclick="location.href='generatelaporan/generatelaporan.php';" type="button">
-                        <img src="../assets/laporanadmin.png" alt="daftar buku">
-                    </button>
-                </div>
-                <div class="cardImg">
-                    <button onclick="location.href='buku/tambahBuku.php';" type="button">
-                        <img src="../assets/tambahbarang.png" alt="daftar buku">
-                    </button>
-                </div>
-                <div class="cardImg">
-                    <button onclick="location.href='peminjaman/daftarpinjam.php';" type="button">
-                        <img src="../assets/pinjam.png" alt="daftar buku">
-                    </button>
-                </div>
-                <div class="cardImg">
-                    <button onclick="location.href='pengembalian/daftarpengembalian.php';" type="button">
-                        <img src="../assets/kembalikan.png" alt="daftar buku">
-                    </button>
-                </div>
-                <div class="cardImg">
-                    <button onclick="location.href='akunPetugas/buatakunpetugas.php';" type="button">
-                        <img src="../assets/buatakun.png" alt="daftar buku">
-                    </button>
-                </div>
-                <div class="cardImg">
-                    <button onclick="location.href='buku/daftarbuku.php';" type="button">
-                        <img src="../assets/buku.png" alt="daftar buku">
-                    </button>
-                </div>
-            </div>
+        <div class="container mt-4">
+        <div class="row justify-content-center mb-3">
+        <div class="col-md-4">
+            <a href="generatelaporan/generatelaporan.php" class="cardButton">
+                <i class="fas fa-book bookIcon"></i>
+                <span class="buttonText">Generate Laporan</span>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="buku/tambahBuku.php" class="cardButton">
+                <i class="fas fa-book bookIcon"></i>
+                <span class="buttonText">Tambah Barang/Kategori</span>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="peminjaman/daftarpinjam.php" class="cardButton">
+                <i class="fas fa-book bookIcon"></i>
+                <span class="buttonText">Peminjaman</span>
+            </a>
         </div>
     </div>
+    <div class="row justify-content-center">
+        <div class="col-md-4">
+            <a href="pengembalian/daftarpengembalian.php" class="cardButton">
+                <i class="fas fa-book bookIcon"></i>
+                <span class="buttonText">Pengembalian</span>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="akunPetugas/buatakunpetugas.php" class="cardButton">
+                <i class="fas fa-book bookIcon"></i>
+                <span class="buttonText">Buat Akun Petugas</span>
+            </a>
+        </div>
+        <div class="col-md-4">
+            <a href="buku/daftarbuku.php" class="cardButton">
+                <i class="fas fa-book bookIcon"></i>
+                <span class="buttonText">Daftar Buku</span>
+            </a>
+        </div>
+    </div>
+</div>
+
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-C6RzsynM9kWDrMNeT87bh95OGNyZPhcTNXj1NW7RuBCsyN/o0jlpcV8Qyq46cDfL" crossorigin="anonymous"></script>
 </body>
 </html>

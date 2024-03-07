@@ -152,7 +152,7 @@ $conn->close();
     </style>
 </head>
 <body>
-    <a href="../dashboardadmin.php" class="btn btn-primary back-btn"><i class="fas fa-arrow-left me-2"></i>Kembali</a>
+    <a href="../dashboardpetugas.php" class="btn btn-primary back-btn"><i class="fas fa-arrow-left me-2"></i>Kembali</a>
     <div class="container p-4 mt-4">
         <h2 class="title">Generate Laporan</h2>
         <div class="layout-table">
